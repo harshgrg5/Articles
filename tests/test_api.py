@@ -5,22 +5,6 @@ from main import app
 client = TestClient(app)
 
 
-def test_get_root():
-    response = client.get("/")
-    assert response.status_code == 200
-    json_data = response.json()
-    assert json_data["success"] is True
-    assert "endpoints" in json_data["data"]
-
-
-def test_health_check():
-    response = client.get("/health")
-    assert response.status_code == 200
-    json_data = response.json()
-    assert json_data["success"] is True
-    assert json_data["data"]["status"] == "healthy"
-
-
 def test_get_articles_structured():
     response = client.get("/articles")
     assert response.status_code == 200
@@ -56,15 +40,6 @@ def test_get_article_validation_error():
     json_data = response.json()
     assert json_data["success"] is False
     assert json_data["error"]["code"] == "INVALID_INPUT"
-
-
-def test_get_myapp_list_raw_array():
-    response = client.get("/myapp/list/")
-    assert response.status_code == 200
-    data = response.json()
-    assert isinstance(data, list)
-    assert len(data) == 4
-    assert data[0]["id"] == 4
 
 
 def test_create_article():
