@@ -1,0 +1,165 @@
+{
+	"info": {
+		"_postman_id": "articles-api-collection",
+		"name": "Articles REST API",
+		"description": "Postman Collection for Articles REST API local testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. GET Structured Articles List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/articles?limit=10&offset=0",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"articles"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "10"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						},
+						{
+							"key": "search",
+							"value": "Virtual",
+							"disabled": true
+						}
+					]
+				}
+			}
+		},
+		{
+			"name": "2. GET Article by ID (Valid)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/articles/4",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"articles",
+						"4"
+					]
+				}
+			}
+		},
+		{
+			"name": "3. GET Article by ID (404 Not Found)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/articles/999",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"articles",
+						"999"
+					]
+				}
+			}
+		},
+		{
+			"name": "4. GET Article by ID (422 Validation Error)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/articles/-1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"articles",
+						"-1"
+					]
+				}
+			}
+		},
+		{
+			"name": "5. GET Raw JSON Array (/myapp/list/)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/myapp/list/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"myapp",
+						"list",
+						""
+					]
+				}
+			}
+		},
+		{
+			"name": "6. POST Create New Article",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"Exploring Generative AI in 2026\",\n  \"prompt\": \"Virtual Realms\",\n  \"short_description\": \"Generative AI models have transformed software engineering and content creation.\",\n  \"content\": \"Full length article content exploring modern generative AI models and multi-agent systems.\",\n  \"image_url\": \"https://example.com/image.webp\"\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/articles",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"articles"
+					]
+				}
+			}
+		}
+	]
+}
